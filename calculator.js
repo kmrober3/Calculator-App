@@ -65,27 +65,25 @@ class Calculator {
     //Utilized to determine if individual character is letter or digit
     isletterOrDigit(x) {  
         return /^[a-zA-Z0-9]$/.test(x);
-
-
     } 
 
     //Utilized to compute addition 
     addition(a, b) {
-
+        return a + b;
     } 
 
     //Utilized to compute subtraction
-    subtraction(a, b) {
-
+    subtraction(a, b) { 
+        return a-b;
     }
 
     //Utilized to compute multiplication 
-    multiplication(a, b) {
-
+    multiplication(a, b) { 
+        return a * b;
     } 
 
     //Utilized to compute division
-    division(a, b) {
-
+    division(a, b) { 
+        return a / b;
     }
 }  
