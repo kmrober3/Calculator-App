@@ -19,14 +19,15 @@ class Calculator {
             if (this.isletterOrDigit(input[i])) { 
                 copy[x] = input[i];
                 x++;        
-            } else if (input[i] in map){
+            } else if (this.map.has(input[i])){
                 copy[x] = input[i]; 
                 x++;
             } else {
                 continue;
             }
         }  
-        let serializedCopy = copy.join("");
+        let serializedCopy = copy.join(""); 
+        console.log(serializedCopy);
         this.deserializeInput(serializedCopy);
     }   
 
@@ -44,7 +45,7 @@ class Calculator {
                 flag = true;
                 i++;
                 continue;
-            } else if (!this.isletterOrDigit(input[x]) && copy[i] in map) {   
+            } else if (!this.isletterOrDigit(copy[i]) && this.map.has(copy[i])) {   
                 i++;
                 b = Number.parseInt(copy[i]);
                 if (copy[i] == "+") { 
@@ -58,7 +59,8 @@ class Calculator {
                 } 
                 i++;
             }
-        } 
+        }  
+        console.log(result);
         return result;
     }
 
@@ -86,4 +88,23 @@ class Calculator {
     division(a, b) { 
         return a / b;
     }
-}  
+}   
+
+let instance = new Calculator();  
+
+//Imports readline
+const readline = require("readline");
+
+//Handles reading from input, and writing to output
+const rl = readline.createInterface({ 
+  input: process.stdin,
+  output: process.stdout
+}); 
+
+/* Displays "Enter something: " to the user, waits for user to type then press enter*/ 
+/*The second argument is a **callback function** that receives whatever the user typed as the parameter `answer`.*/
+rl.question("Enter something: ", (answer) => {  
+  instance.serializeInput(answer);  
+  console.log(`You typed: ${answer}`);
+  rl.close();
+});
