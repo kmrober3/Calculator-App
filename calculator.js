@@ -40,13 +40,13 @@ class Calculator {
         let b = 0;  
         while (i < max) {
             if (this.isletterOrDigit(copy[i]) && flag == false) { 
-                a = copy[i];  
+                a = Number.parseInt(copy[i]);
                 flag = true;
                 i++;
                 continue;
             } else if (!this.isletterOrDigit(input[x]) && copy[i] in map) {   
                 i++;
-                b = copy[i];
+                b = Number.parseInt(copy[i]);
                 if (copy[i] == "+") { 
                     result += this.addition(a, b);  
                 } else if (copy[i] == "-") {
