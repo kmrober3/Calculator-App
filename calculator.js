@@ -11,7 +11,8 @@ class Calculator {
     }
     
     //Parses input
-    serializeInput(input) { 
+    serializeInput(input) {  
+        //console.log(input)
         let len = input.length; 
         let copy = []; 
         let x = 0;  
@@ -30,8 +31,8 @@ class Calculator {
             }
         }  
         let serializedCopy = copy.join(""); 
-        console.log(serializedCopy);
-        this.deserializeInput(serializedCopy);
+        let result = this.deserializeInput(serializedCopy); 
+        document.getElementById("result").textContent = result;
     }   
 
     //Processes input
@@ -54,13 +55,22 @@ class Calculator {
     isDecimal(x) {
         return /^[.]$/.test(x);
     }
-}   
+}    
+
+
+let calc = new Calculator(); 
+let userInput = "";
+document.getElementById("input").addEventListener("click", () => {
+    userInput = document.getElementById("equation").value; 
+    calc.serializeInput(userInput);
+})
 
 
 //Testing Code
+let instance = new Calculator();   
 
-let instance = new Calculator();  
 
+/*
 //Imports readline
 const readline = require("readline");
 
@@ -68,12 +78,12 @@ const readline = require("readline");
 const rl = readline.createInterface({ 
   input: process.stdin,
   output: process.stdout
-}); 
+});*/
 
 /* Displays "Enter something: " to the user, waits for user to type then press enter*/ 
 /*The second argument is a **callback function** that receives whatever the user typed as the parameter `answer`.*/
-rl.question("Enter something: ", (answer) => {  
+/*rl.question("Enter something: ", (answer) => {  
   instance.serializeInput(answer);  
   console.log(`You typed: ${answer}`);
   rl.close();
-});
+});*/
