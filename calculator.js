@@ -32,7 +32,7 @@ class Calculator {
         }  
         let serializedCopy = copy.join(""); 
         let result = this.deserializeInput(serializedCopy); 
-        document.getElementById("result").textContent = result;
+        document.getElementById("result").textContent = "Result: " + result;
     }   
 
     //Processes input
@@ -60,7 +60,7 @@ class Calculator {
 
 let calc = new Calculator(); 
 let userInput = "";
-document.getElementById("input").addEventListener("click", () => {
+document.getElementById("input").addEventListener("click", (event) => { 
     userInput = document.getElementById("equation").value; 
     calc.serializeInput(userInput);
 })
